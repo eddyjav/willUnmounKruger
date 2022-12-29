@@ -1,5 +1,5 @@
 
-import './App.css';
+
 import React from 'react';
 
 class ComponenteCiclo extends React.Component { 
