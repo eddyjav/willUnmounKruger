@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import React from 'react';
+
+class ComponenteCiclo extends React.Component { 
+  
+  componentWillUnmount() {
+    alert('El componente se va a desmontar');
+  }
+ 
+  render() {
+    return <div>
+      <h1 className='hola'>Hola Krugers!</h1> 
+    </div>;
+  }
+}
+ 
+class App extends React.Component {
+  state = { display: true };
+ 
+  render() {
+    let comp;
+    if (this.state.display) {
+      comp = <ComponenteCiclo />;
+    }
+    return (
+      <div>
+        {comp}
+        <button className='boton' onClick={()=> this.setState({ display: !this.state.display }) }>
+          Componente
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
